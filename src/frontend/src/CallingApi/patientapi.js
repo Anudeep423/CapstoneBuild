@@ -76,3 +76,13 @@ export const getPatDetails = (id) => {
     })
     .catch(err => console.log(err));
 }
+
+export const updatePatDetails = (body,id) => {
+  return fetch(`http://localhost:8000/catalog/patients/${id}/update`, {
+        method : "PUT",       
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },body: JSON.stringify(body),
+    }).then(res => res.json()).catch(err => console.log(err.message));
+}

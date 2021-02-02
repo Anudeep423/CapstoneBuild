@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {signout,pat_dets,getPatDetails} from "../CallingApi/patientapi"
+import {signout,pat_dets,getPatDetails,updatePatDetails} from "../CallingApi/patientapi"
 import { signup } from '../CallingApi/patientapi'
 import {Link} from "react-router-dom"
 const PatientDashboard = ({props,history}) => {
@@ -48,6 +48,7 @@ const PatientDashboard = ({props,history}) => {
       e_emergency_no : ""})
 
       const {
+        e_id ,
         e_age,
         e_gender ,
         e_bloodgroup ,
@@ -71,10 +72,12 @@ const PatientDashboard = ({props,history}) => {
               if(res.message || res.length === 0){
               SetValues({...values,success : false ,error : res.message})
               }else{
-                SetValues({...values,success : true})
+                  SetValues({...values,success : true})
+                
               }
               const e = {...res[0]}
-              setEdits({e_age : e.age,e_gender : e.gender , e_bloodgroup : e.bloodgroup,
+              console.log(e._id);
+              setEdits({e_id : e._id ,e_age : e.age,e_gender : e.gender , e_bloodgroup : e.bloodgroup,
                 e_allergies : e.allergies ,
                 e_occur_cond : e.occur_cond,
                 e_medication : e.medication,
@@ -137,7 +140,41 @@ const PatientDashboard = ({props,history}) => {
           .catch((err) => console.log(err.message))
       }
 
-      const e_onSubmit = () => {
+      const e_onSubmit = (e) => {
+        e.preventDefault()
+          if( !e_age ||
+            !e_gender ||
+            !e_bloodgroup ||
+            !e_allergies ||
+            !e_occur_cond ||
+            !e_medication ||
+            !e_emergency_no){
+              alert("fileds cannot be left empty");
+            }else{
+              
+              updatePatDetails(
+                {
+                  id : e_id,
+                  age : parseInt(e_age),
+                  gender : e_gender,
+                  bloodgroup : e_bloodgroup ,
+                  allergies  : e_allergies,
+                  occur_cond : e_occur_cond,
+                  medication : e_medication,
+                  emergency_no : parseInt(e_emergency_no)
+                },e_id
+              )
+                .then((data) => {
+                  console.log(data);
+                  if (data.msg) {
+                    SetValues({ ...values, error : data.msg, message : '' })
+                  } else {
+                    SetValues({ ...values, error : '', message : data.message })
+                  }
+                })
+                .catch((err) => console.log(err.message))
+
+            }
 
       }
 
@@ -223,7 +260,9 @@ const PatientDashboard = ({props,history}) => {
             <button onClick = {onSubmit} className='btn'>
               Submit
             </button>
+            
           </div>
+          
        
           
         </div>
@@ -316,6 +355,16 @@ const PatientDashboard = ({props,history}) => {
               Submit
             </button>
           </div>
+          {message ? <p>{message}</p>  : "" }
+          <Link><button onClick = { () => {SetValues({...values,editDetails : false,message : ""})  
+          setEdits({e_age : "",
+          e_gender : "",
+          e_bloodgroup : "",
+          e_allergies : "",
+          e_occur_cond : "",
+          e_medication : "",
+          e_emergency_no : ""})
+        } } >Pateint Dasboard</button></Link>
         </div>
         
       </div>
@@ -325,10 +374,27 @@ const PatientDashboard = ({props,history}) => {
         
         <div> 
           <h1>Welcome {name}</h1>
+          <button  onClick = { () => {signout( () => {history.push("/users/login")} )}  }>signout</button>
           <h1>Patient Dashboard</h1>
-           {success ? <p>You Have Given Your Basic Details</p> : userForm("Enter Your basic details")}
-            <button  onClick = { () => {signout( () => {history.push("/users/login")} )}  }>signout</button>
-            {success ? <> <br></br> <button onClick = { () => { SetValues({...values,editDetails : true}) }}>Edit your details</button> </>  : ""}
+           {success ? <p>You Have Given Your Basic Details</p> : userForm("Enter Your basic details")    }
+           {success && !editDetails ? <div > <h1>Your basic Details : </h1> 
+           <br></br>
+           <h3>Age : {e_age}</h3>
+           <br></br>
+           <h3>Gender : {e_gender}</h3>
+           <br></br>
+           <h3>Bloodgroup : {e_bloodgroup}</h3>
+           <br></br>
+           <h3>Allergies : {e_allergies}</h3>
+           <br></br>
+           <h3>Occured Condition : {e_occur_cond}</h3>
+           <br></br>
+           <h3>Medication : {e_medication}</h3>
+           <br></br>
+           <h3>Emergency Number : {e_emergency_no}</h3>
+           </div> : ""}
+           
+            {success && !editDetails? <> <br></br> <button onClick = { () => { SetValues({...values,editDetails : true}) }}>Edit your details</button> </>  : ""}
           {!success ? <Link to ="/patient/dashboard"> <button >User Dashboard</button> </Link>  : ""}
           {editDetails ? editForm() : <p></p> }
           {editDetails ?  <button onClick = { () => { SetValues({...values,editDetails : false})
