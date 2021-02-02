@@ -24,7 +24,7 @@ function LoginForm(props) {
         }
         }).catch(err => console.log(err.message));
         }else{
-            alert("Enter all detailssss")
+            alert("Enter all details")
         }
     }
     const performRedirects  = () => {

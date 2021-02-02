@@ -49,3 +49,30 @@ export const authenticate = (data, next) => {
       next();
     }
   };
+
+  export const pat_dets = (pats) =>{
+  let t = {}
+    t = JSON.parse(localStorage.getItem("jwt"))
+    console.log(t.token)
+    console.log(pats);
+    console.log(JSON.stringify(pats));
+    return fetch(`http://localhost:8000/catalog/patients/create`, {
+        method : "POST",       
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization : `Basic ${t.token}`
+        },body: JSON.stringify(pats),
+    }).then(res => res.json()).catch(err => console.log(err.message));
+}
+
+export const getPatDetails = (id) => {
+
+  return fetch(`http://localhost:8000/catalog/patients/${id}`, {
+    method: "GET"
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+}
