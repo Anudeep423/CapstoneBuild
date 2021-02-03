@@ -13,7 +13,7 @@ import LoginForm from './Login/LoginForm'
 import Home from './home'
 import PrivateRoute from './auth/PrivateRoute'
 import doctorDashboard from './Dashboards/doctorDashboard'
-import orgDashboard from './Dashboards/orgDashboard'
+import OrgDashboard from './Dashboards/orgDashboard'
 import PatientDashboard from './Dashboards/patientDashboard'
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
         path='/patient/dashboard'
         component={PatientDashboard}
       />
-      <PrivateRoute exact path='/org/dashboard' component={orgDashboard} />
+      <PrivateRoute exact path='/org/dashboard' component={OrgDashboard} />
       <PrivateRoute
         exact
         path='/doctor/dashboard'
