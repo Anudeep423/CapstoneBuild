@@ -17,6 +17,8 @@ function OrgDashboard({history}) {
 
         },[])
 
+console.log("Working);
+
        const onSubmit = () => {
            const patDets = PatientBasicDetails
             console.log(patDets.data);
