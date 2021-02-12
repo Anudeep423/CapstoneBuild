@@ -18,7 +18,7 @@ import PatientDashboard from './Dashboards/patientDashboard'
 
 function App() {
 
-console.log("Updating for the commit"")
+console.log("Updating for the commit"wddw")
   return (
     <Switch>
       <Route exact path='/' component={Home} />
