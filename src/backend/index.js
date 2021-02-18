@@ -58,7 +58,7 @@ function validateUser(req, res, next) {
 
 app.use('/users', usersRouter);
 
-app.use('/catalog', validateUser, catalogRouter);
+app.use('/catalog', catalogRouter);
 
 
 // catch 404 and forward to error handler

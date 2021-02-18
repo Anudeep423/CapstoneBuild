@@ -49,7 +49,6 @@ export const authenticate = (data, next) => {
       next();
     }
   };
-
   export const pat_dets = (pats) =>{
   let t = {}
     t = JSON.parse(localStorage.getItem("jwt"))
@@ -95,4 +94,75 @@ export const getAllPatientDetails = () => {
       return response.json();
     })
     .catch(err => console.log(err));
+}
+
+export const uploadPatientReport = (file) => {
+  console.log(JSON.stringify(file))
+  return fetch("http://localhost:8000/catalog/doctors/uploadReport" , {
+    method : "POST",
+    headers : {
+      Accept : "multipart/form-data",
+      "Content-Type" : "multipart/form-data",
+    },
+    body  : JSON.stringify(file),
+  }  ).then(res => res.json()).catch(err => {console.log(err)})
+  
+}
+
+// export const uploadPrescription = (data) => {
+//   console.log(JSON.stringify(file))
+//   return fetch("http://localhost:8000/catalog/doctors/uploadReport" , {
+//     method : "POST",
+//     headers : {
+//       Accept : "application/json",
+//       "Content-Type" : "application/json",
+//     },
+//     body  : JSON.stringify(file),
+//   }  ).then(res => res.json()).catch(err => {console.log(err)})
+  
+// }
+
+
+export const addPrescription = (data) => {
+  console.log(data)
+ return fetch("http://localhost:8000/catalog/patients/prescriptions/create" , {
+  method : "POST",
+    headers : {
+      Accept : "application/json",
+      "Content-Type" : "application/json"
+    },body : JSON.stringify(data),
+  }).then(res => res.json()).catch(err => {console.log(err.message)})
+
+}
+
+export const getPres = (id) => {
+  return fetch(`http://localhost:8000/catalog/patient/${id}/pres`, {
+    method: "GET"
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+}
+
+export const addGraphValues = (data) => {
+  console.log(data)
+ return fetch("http://localhost:8000/catalog/doctor/create/graph" , {
+  method : "POST",
+    headers : {
+      Accept : "application/json",
+      "Content-Type" : "application/json"
+    },body : JSON.stringify(data),
+  }).then(res => res.json()).catch(err => {console.log(err.message)})
+
+}
+
+export const getPatGraph = (id) => {
+return  fetch(`http://localhost:8000/catalog/patient/${id}/graphvalues`, {
+  method: "GET"
+})
+  .then(response => {
+    return response.json();
+  })
+  .catch(err => console.log(err));
 }
