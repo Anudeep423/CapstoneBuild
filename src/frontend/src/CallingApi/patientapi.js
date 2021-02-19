@@ -26,7 +26,7 @@ export const signin = (pats,path) =>{
         },
     }).then(res => res.json()).catch(err => console.log(err.message));
 }
-
+// authenticate route 
 export const authenticate = (data, next) => {
     if (typeof window !== "undefined") {
       localStorage.setItem("jwt", JSON.stringify(data));
