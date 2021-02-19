@@ -12,6 +12,8 @@ export const signup = (pats,path) =>{
         },
     }).then(res => res.json()).catch(err => console.log(err.message));
 }
+
+//signin route
 export const signin = (pats,path) =>{
     console.log(pats);
     //console.log(JSON.stringify(pats));
