@@ -33,6 +33,7 @@ export const authenticate = (data, next) => {
       next();
     }
   };
+// is autheticated route 
 
   export const isAutheticated = () => {
     if (typeof window == "undefined") {
