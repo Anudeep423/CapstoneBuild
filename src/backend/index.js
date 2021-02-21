@@ -9,7 +9,7 @@ const createError = require('http-errors');
 const usersRouter = require('./routes/users');
 const catalogRouter = require('./routes/catalog');
 
-
+// middlewares
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
