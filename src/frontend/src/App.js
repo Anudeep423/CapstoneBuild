@@ -27,6 +27,8 @@ import OrgAllDetails from "./Dashboards/OrgAllDetails"
 import OrgPrescription from "./Dashboards/OrgPrescription"
 import PreviousPrescriptions from "./Dashboards/previousPrescriptions"
 
+//adding all routes
+
 function App() {
   return (
     <Switch>
