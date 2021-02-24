@@ -1,5 +1,5 @@
 import {API} from "../Backend"
-
+//signup route
 export const signup = (pats,path) =>{
     console.log(pats);
     //console.log(JSON.stringify(pats));
