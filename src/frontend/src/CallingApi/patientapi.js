@@ -137,7 +137,7 @@ export const addPrescription = (data) => {
   }).then(res => res.json()).catch(err => {console.log(err.message)})
 
 }
-
+// doctor routes
 export const getPres = (id) => {
   return fetch(`http://localhost:8000/catalog/patient/${id}/pres`, {
     method: "GET"
