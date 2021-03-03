@@ -89,7 +89,7 @@ export const updatePatDetails = (body,id) => {
         },body: JSON.stringify(body),
     }).then(res => res.json()).catch(err => console.log(err.message));
 }
-
+// get patient details route 
 export const getAllPatientDetails = () => {
   return fetch(`http://localhost:8000/catalog/patients`, {
     method: "GET"
