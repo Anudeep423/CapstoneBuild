@@ -27,6 +27,8 @@ function Graph({history}) {
       }
 
      // values to add in graph 
+	
+	// fetching data from backend for the graph
 
       const {Heart_rate  ,Blood_pressure , Cholesterol, Blood_sugar  } = values;
       const onClicks = () => {
