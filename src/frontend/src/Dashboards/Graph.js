@@ -26,7 +26,7 @@ function Graph({history}) {
             setValues({...values,[e.target.name] : parseInt(e.target.value) })
       }
 
-     
+     // values to add in graph 
 
       const {Heart_rate  ,Blood_pressure , Cholesterol, Blood_sugar  } = values;
       const onClicks = () => {
