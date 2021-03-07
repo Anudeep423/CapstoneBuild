@@ -2,7 +2,7 @@
 import {Link} from "react-router-dom"
 import React,{useState,useEffect} from 'react'
 import {addGraphValues,getPatGraph} from "../CallingApi/patientapi"
-// graph function
+// graph functions
 function Graph({history}) {
      
      
