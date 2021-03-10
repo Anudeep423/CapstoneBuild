@@ -15,6 +15,7 @@ export const signup = (pats,path) =>{
 }
 
 //signin route
+// doctor api
 export const signin = (pats,path) =>{
     console.log(pats);
     //console.log(JSON.stringify(pats));
