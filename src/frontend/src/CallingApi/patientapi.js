@@ -55,6 +55,8 @@ export const authenticate = (data, next) => {
       next();
     }
   };
+
+// adding patient details
   export const pat_dets = (pats) =>{
   let t = {}
     t = JSON.parse(localStorage.getItem("jwt"))
