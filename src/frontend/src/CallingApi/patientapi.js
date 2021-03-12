@@ -72,7 +72,7 @@ export const authenticate = (data, next) => {
         },body: JSON.stringify(pats),
     }).then(res => res.json()).catch(err => console.log(err.message));
 }
-
+// get patinet details
 export const getPatDetails = (id) => {
 
   return fetch(`http://localhost:8000/catalog/patients/${id}`, {
