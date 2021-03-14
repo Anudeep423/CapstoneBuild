@@ -5,7 +5,7 @@ import { IconContext } from 'react-icons/lib'
 import { Button } from '../Landing Page/Button'
 import '../Landing Page/Navbar.css'
 import './styles.css'
-
+//doctorDashboard
 // age: 26
 // allergies: "latex and dust mites allergies"
 // bloodgroup: "O-"
