@@ -14,7 +14,7 @@ import './styles.css'
 // gender: "M"
 // medication: "methotrexate, sulfasalazine"
 // occur_cond: "Rheumatoid Arthritis"
-
+//aunt for doctor dashboard
 function DoctorUploadPanal({history}) {
 
     console.log(history);
