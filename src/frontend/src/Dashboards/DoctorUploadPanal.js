@@ -16,6 +16,7 @@ import './styles.css'
 // occur_cond: "Rheumatoid Arthritis"
 //auth for doctor dashboard
 //prescription added
+// adding patient history
 function DoctorUploadPanal({history}) {
 
     console.log(history);
