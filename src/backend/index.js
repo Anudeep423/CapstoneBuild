@@ -8,7 +8,7 @@ const cors = require('cors');
 const createError = require('http-errors');
 const usersRouter = require('./routes/users');
 const catalogRouter = require('./routes/catalog');
-
+// fixing bugs
 // middlewares
 app.use(cors());
 app.use(express.json());
